@@ -119,7 +119,7 @@ func main() {
 			// Okay so here we're actually spending stuff. Let's see.
 			eurAmount := 0 - getEURValue(reserves, 0-t.Amount.Value)
 			totalReserves -= 0 - t.Amount.Value
-			if t.Date.After(time.Date(2019, time.February, 1, 0, 0, 0, 0, time.UTC)) {
+			if t.Date.After(time.Date(2019, time.February, 7, 0, 0, 0, 0, time.UTC)) {
 				dOrC := "D"
 				if t.Amount.Value > 0 {
 					dOrC = "C"
@@ -177,7 +177,7 @@ func doTransferWiseApiCall(url string) ([]byte, error) {
 		return nil, err
 	}
 
-	req.Header.Set("Authorization", "Bearer "+os.Getenv("TW_API_TOKEN"))
+	req.Header.Set("Authorization", "Bearer "+os.Getenv("TWAPI_TOKEN"))
 
 	res, getErr := c.Do(req)
 	if getErr != nil {
